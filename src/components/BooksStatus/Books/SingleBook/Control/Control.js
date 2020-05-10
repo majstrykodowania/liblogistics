@@ -1,5 +1,7 @@
 import React from "react";
 
+import crossImg from "../../../../../assets/images/cross.png";
+import checkImg from "../../../../../assets/images/check.png";
 import classes from "./control.module.css";
 
 const control = (props) => {
@@ -7,15 +9,23 @@ const control = (props) => {
     case "available":
       return (
         <div className={classes.Control}>
-          <p>Status</p>
-          <p>dostępne</p>
+          <div className={classes.state}>
+            <p>Status</p>
+            {props.available ? (
+              <img src={checkImg} alt="" className={classes.image} />
+            ) : (
+              <img src={crossImg} alt="" className={classes.image} />
+            )}
+          </div>
         </div>
       );
     case "state":
       return (
         <div className={classes.Control}>
           <p>Stan</p>
-          <p>2/4</p>
+          <p>
+            {props.availableQuantity}/{props.quantity}
+          </p>
         </div>
       );
     case "switch":

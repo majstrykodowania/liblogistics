@@ -30,7 +30,15 @@ class Books extends Component {
     if (!this.state.loading)
       if (this.state.books) {
         singleBooks = this.state.books.map((book, id) => {
-          if (book) return <SingleBook key={id} title={book.title} />;
+          if (book)
+            return (
+              <SingleBook
+                key={id}
+                title={book.title}
+                quantity={book.quantity}
+                readers={book.readers}
+              />
+            );
           else return null;
         });
       } else {
