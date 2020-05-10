@@ -16,7 +16,9 @@ class Books extends Component {
     axios
       .get("https://liblogistic.firebaseio.com/books.json")
       .then((response) => {
-        this.setState({ books: response.data });
+        // Przekonwertowanie otrzymanego obiektu na tablicę obiektów
+        let booksArray = Object.values(response.data);
+        this.setState({ books: booksArray });
         this.setState({ loading: false });
       })
       .catch((error) => console.log(error));
@@ -26,9 +28,14 @@ class Books extends Component {
     // Wyświetlenie spinnera na podstawie state loading
     let singleBooks = <Spinner />;
     if (!this.state.loading)
-      singleBooks = this.state.books.map((book, id) => {
-        return <SingleBook key={id} title={book.title} />;
-      });
+      if (this.state.books) {
+        singleBooks = this.state.books.map((book, id) => {
+          if (book) return <SingleBook key={id} title={book.title} />;
+          else return null;
+        });
+      } else {
+        singleBooks = <p>Brak książek w bazie</p>;
+      }
 
     return <ul className={classes.Books}>{singleBooks}</ul>;
   }
