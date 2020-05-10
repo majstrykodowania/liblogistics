@@ -1,5 +1,12 @@
 import React from "react";
 
-const BooksStatus = () => <h1>BookStatus</h1>;
+import Books from "./Books/Books";
 
-export default BooksStatus;
+const booksStatus = () => (
+  <>
+    <h2>Stan Magazynowy</h2>
+    <Books />
+  </>
+);
+
+export default booksStatus;
