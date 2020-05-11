@@ -36,7 +36,7 @@ class Books extends Component {
                 key={id}
                 title={book.title}
                 quantity={book.quantity}
-                readers={book.readers}
+                readers={book.currentReaders ? book.currentReaders.length : 0}
               />
             );
           else return null;
