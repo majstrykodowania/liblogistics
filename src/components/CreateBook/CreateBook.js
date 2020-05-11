@@ -65,6 +65,7 @@ class CreateBook extends Component {
             required
           />
           <input
+            type="number"
             name="quantity"
             value={this.state.quantity}
             onChange={this.handleChangeInput}

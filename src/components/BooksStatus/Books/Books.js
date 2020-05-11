@@ -7,8 +7,9 @@ import classes from "./books.module.css";
 
 class Books extends Component {
   state = {
-    loading: false,
+    loading: true,
     books: [],
+    error: null,
   };
 
   componentDidMount() {
@@ -17,39 +18,43 @@ class Books extends Component {
     axios
       .get("https://liblogistic.firebaseio.com/books.json")
       .then((response) => {
+        if (response.statusText === "OK" && !response.data)
+          throw Error("Brak książek w bazie");
+        return response;
+      })
+      .then((response) => {
         // Przekonwertowanie otrzymanego obiektu na tablicę obiektów
         let booksArray = Object.values(response.data);
-        this.setState({ books: booksArray });
-        this.setState({ loading: false });
+        this.setState({ books: booksArray, loading: false });
       })
       .catch((error) => {
-        console.log(error);
-        this.setState({ loading: false });
+        this.setState({
+          error: error.message,
+          loading: false,
+        });
       });
   }
 
   render() {
     // Wyświetlenie spinnera na podstawie state loading
-    let singleBooks = this.state.loading ? (
-      <Spinner />
-    ) : (
-      <p>Brak książek w bazie</p>
+    const singleBooks = this.state.books.map((book, id) => (
+      <SingleBook
+        key={id}
+        title={book.title}
+        quantity={book.quantity}
+        readers={book.currentReaders ? book.currentReaders.length : 0}
+      />
+    ));
+
+    return (
+      <>
+        {this.state.loading && <Spinner />}
+        {this.state.error && <h3>{this.state.error}</h3>}
+        {!this.state.loading && !this.state.error && (
+          <ul className={classes.Books}>{singleBooks}</ul>
+        )}
+      </>
     );
-
-    if (this.state.books.length > 0) {
-      singleBooks = this.state.books.map((book, id) => {
-        return (
-          <SingleBook
-            key={id}
-            title={book.title}
-            quantity={book.quantity}
-            readers={book.currentReaders ? book.currentReaders.length : 0}
-          />
-        );
-      });
-    }
-
-    return <ul className={classes.Books}>{singleBooks}</ul>;
   }
 }
 
