@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "./CreateBook.module.css";
-import { booksDb } from "../../dataBase/booksDb";
-import axios from "axios";
+import { addNewBook } from "../../dataBase/dataBase";
 
 class CreateBook extends Component {
   state = {
@@ -21,17 +20,10 @@ class CreateBook extends Component {
   handleCreateBook = (e) => {
     e.preventDefault();
     const newBook = {
-      id: booksDb.length + 1,
       ...this.state,
-      currentReaders: [],
-      history: [],
     };
 
-    axios
-      .post("https://liblogistic.firebaseio.com/books.json", newBook)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-
+    addNewBook(newBook);
     this.resetInputs();
   };
 
