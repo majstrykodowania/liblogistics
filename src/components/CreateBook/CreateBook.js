@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./CreateBook.module.css";
+import { booksDb } from "../../dataBase/booksDb";
 
 class CreateBook extends Component {
   state = {
@@ -16,11 +17,33 @@ class CreateBook extends Component {
     });
   };
 
+  handleCreateBook = (e) => {
+    e.preventDefault();
+    const newBook = {
+      id: booksDb.length + 1,
+      ...this.state,
+      currentReaders: [],
+      history: [],
+    };
+
+    this.resetInputs();
+  };
+
+  resetInputs = () => {
+    this.setState({
+      title: "",
+      author: "",
+      released: "",
+      description: "",
+      quantity: "",
+    });
+  };
+
   render() {
     return (
       <div className={styles.formContainer}>
         <h1 className={styles.label}>DODAJ KSIĄŻKĘ</h1>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={this.handleCreateBook}>
           <input
             name="title"
             value={this.state.title}
@@ -34,6 +57,7 @@ class CreateBook extends Component {
             placeholder="autor"
           />
           <input
+            type="number"
             name="released"
             value={this.state.released}
             onChange={this.handleChangeInput}
@@ -52,8 +76,12 @@ class CreateBook extends Component {
             placeholder="opis"
           />
           <div className={styles.buttonsWrapper}>
-            <button className={styles.btnCreate}>Dodaj</button>
-            <button className={styles.btnReset}>Resetuj</button>
+            <button className={styles.btnCreate} type="submit">
+              Dodaj
+            </button>
+            <button className={styles.btnReset} onClick={this.resetInputs}>
+              Resetuj
+            </button>
           </div>
         </form>
       </div>

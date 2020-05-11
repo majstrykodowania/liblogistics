@@ -5,6 +5,7 @@
   font-family: "Segoe UI", sans-serif;
   color: #676666;
   font-size: 30px;
+  font-weight: bold;
 }
 
 h1.label {
@@ -18,19 +19,24 @@ h1.label {
 
 input {
   width: 100%;
-  padding: 1em;
+  padding: 0.5em;
   margin: 0.5em auto;
   color: #707070;
   border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 textarea {
   width: 100%;
-  padding: 1em;
-  margin: 0.5em;
+  padding: 0.5em;
   margin: 0.5em auto;
   color: #707070;
   border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .buttonsWrapper {
