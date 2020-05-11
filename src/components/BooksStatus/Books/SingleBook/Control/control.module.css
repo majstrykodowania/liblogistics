@@ -1,8 +1,9 @@
 .Control {
   margin: 0 15px;
+  text-align: center;
 }
 .image {
-  width: 20px;
+  width: 25px;
 }
 .state {
   display: flex;
@@ -12,4 +13,9 @@
 
 .Control p {
   margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.Control h3 {
+  margin: 0 0 15px 0;
 }

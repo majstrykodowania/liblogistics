@@ -10,7 +10,7 @@ const control = (props) => {
       return (
         <div className={classes.Control}>
           <div className={classes.state}>
-            <p>Status</p>
+            <h3>Status</h3>
             {props.available ? (
               <img src={checkImg} alt="" className={classes.image} />
             ) : (
@@ -22,7 +22,7 @@ const control = (props) => {
     case "state":
       return (
         <div className={classes.Control}>
-          <p>Stan</p>
+          <h3>Stan</h3>
           <p>
             {props.availableQuantity}/{props.quantity}
           </p>
