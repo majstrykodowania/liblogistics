@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import BooksStatus from "./components/BooksStatus/BooksStatus";
-import CreateForm from "./components/CreateForm/CreateForm";
+import CreateBook from "./components/CreateBook/CreateBook";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <BrowserRouter>
         <Layout>
           <Route exact path="/" component={BooksStatus} />
-          <Route path="/create" component={CreateForm} />
+          <Route path="/create" component={CreateBook} />
         </Layout>
       </BrowserRouter>
     );

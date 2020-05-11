@@ -1,0 +1,64 @@
+.formContainer {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+  color: #676666;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h1.label {
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+.form {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.5em auto;
+  color: #707070;
+  border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.5em auto;
+  color: #707070;
+  border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.buttonsWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.buttonsWrapper button {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  width: 210px;
+  height: 50px;
+  border-radius: 20px;
+  margin: 30px;
+}
+button.btnCreate {
+  border-color: #05aa9a;
+  background-color: #32e18a;
+}
+button.btnReset {
+  border-color: #fea100;
+  background-color: #ffc06e;
+}
