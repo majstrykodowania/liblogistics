@@ -1,8 +1,18 @@
-import axios from "axios";
+import db from "../config/fbConfig";
 
 export const addNewBook = (newBook) => {
-  axios
-    .post("https://liblogistic.firebaseio.com/books.json", newBook)
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+  db.collection("books").add(newBook);
+};
+
+export const getBookList = async () => {
+  let booksArr = [];
+  const books = await db
+    .collection("books")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((book) => {
+        booksArr.push({ id: book.id, ...book.data() });
+      });
+    });
+  return booksArr;
 };

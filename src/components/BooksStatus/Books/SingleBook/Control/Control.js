@@ -29,7 +29,14 @@ const control = (props) => {
         </div>
       );
     case "switch":
-      return <button className={classes.Control}>Edit</button>;
+      return (
+        <button
+          className={classes.Control}
+          onClick={() => props.openModal(props.id)}
+        >
+          Edit
+        </button>
+      );
     default:
       return <p>Choose option</p>;
   }

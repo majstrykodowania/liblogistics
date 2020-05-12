@@ -1,53 +1,74 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { getBookList } from "../../../dataBase/dataBase";
 
 import SingleBook from "./SingleBook/SingleBook";
 import Spinner from "../../Spinner/Spinner";
 import classes from "./books.module.css";
+import ModalBook from "../../ModalBook/ModalBook";
 
 class Books extends Component {
   state = {
     loading: true,
     books: [],
     error: null,
+    openModal: false,
+    openModalId: null,
   };
 
   componentDidMount() {
     // Pobranie z bazy tablicy Books i przypisane do state books
     this.setState({ loading: true });
-    axios
-      .get("https://liblogistic.firebaseio.com/books.json")
-      .then((response) => {
-        if (response.statusText === "OK" && !response.data)
-          throw Error("Brak książek w bazie");
-        return response;
-      })
-      .then((response) => {
-        // Przekonwertowanie otrzymanego obiektu na tablicę obiektów
-        let booksArray = Object.values(response.data);
-        this.setState({ books: booksArray, loading: false });
-      })
-      .catch((error) => {
+
+    getBookList()
+      .then((books) =>
         this.setState({
-          error: error.message,
           loading: false,
-        });
-      });
+          books,
+        })
+      )
+      .catch((err) =>
+        this.setState({
+          error: err.message,
+          loading: false,
+        })
+      );
   }
+
+  handleOpenModal = (id) => {
+    this.setState({
+      openModal: true,
+      openModalId: id,
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({
+      openModal: false,
+      openModalId: null,
+    });
+  };
 
   render() {
     // Wyświetlenie spinnera na podstawie state loading
-    const singleBooks = this.state.books.map((book, id) => (
+    const singleBooks = this.state.books.map((book) => (
       <SingleBook
-        key={id}
+        key={book.id}
+        id={book.id}
         title={book.title}
         quantity={book.quantity}
         readers={book.currentReaders ? book.currentReaders.length : 0}
+        openModal={this.handleOpenModal}
       />
     ));
 
     return (
       <>
+        {this.state.openModal && (
+          <ModalBook
+            id={this.state.openModalId}
+            closeModal={this.handleCloseModal}
+          />
+        )}
         {this.state.loading && <Spinner />}
         {this.state.error && <h3>{this.state.error}</h3>}
         {!this.state.loading && !this.state.error && (

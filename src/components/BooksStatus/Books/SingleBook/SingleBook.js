@@ -18,7 +18,7 @@ const singleBook = (props) => {
             quantity={props.quantity}
             availableQuantity={availableQuantity}
           />
-          <Control type="switch" />
+          <Control type="switch" id={props.id} openModal={props.openModal} />
         </div>
       </div>
     </li>
