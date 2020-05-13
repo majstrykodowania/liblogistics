@@ -1,17 +1,45 @@
 import React, { Component } from "react";
+import { staticData } from "../../staticData";
 import classes from "./ModalBook.module.css";
+import LayoutModal from "./LayoutModal";
+import AboutTab from "./ModalTabs/AboutTab";
+import ActionsTab from "./ModalTabs/ActionsTab";
+import HistoryTab from "./ModalTabs/HistoryTab";
 
 class ModalBook extends Component {
-  state = {};
+  state = {
+    activeTab: staticData.ABOUTTAB,
+    idBook: null,
+  };
+
+  componentDidMount() {
+    this.setState({
+      idBook: this.props.id,
+    });
+  }
+
+  handleChangeTab = (tab) => {
+    this.setState({
+      activeTab: tab,
+    });
+  };
+
   render() {
-    const { id, closeModal } = this.props;
+    const { closeModal } = this.props;
+    const { ABOUTTAB, ACTIONSTAB, HISTORYTAB } = staticData;
+
     return (
       <>
         <div className={classes.containerModal}>
           <div className={classes.wrapperModal}>
-            <h1>modal</h1>
-            <h3>id ksiazki: {id}</h3>
-            <button onClick={closeModal}>Close modal</button>
+            <LayoutModal
+              changeTab={this.handleChangeTab}
+              closeModal={closeModal}
+            >
+              {this.state.activeTab === ABOUTTAB && <AboutTab />}
+              {this.state.activeTab === ACTIONSTAB && <ActionsTab />}
+              {this.state.activeTab === HISTORYTAB && <HistoryTab />}
+            </LayoutModal>
           </div>
         </div>
       </>
