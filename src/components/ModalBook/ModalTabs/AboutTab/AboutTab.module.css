@@ -1,0 +1,11 @@
+.aboutTabContainer {
+  width: 100%;
+  height: 80%;
+  margin-top: 20px;
+  padding: 0 2em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

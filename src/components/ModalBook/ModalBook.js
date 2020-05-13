@@ -4,7 +4,7 @@ import { getSingleBook } from "../../dataBase/dataBase";
 import classes from "./ModalBook.module.css";
 import Spinner from "../Spinner/Spinner";
 import LayoutModal from "./LayoutModal";
-import AboutTab from "./ModalTabs/AboutTab";
+import AboutTab from "./ModalTabs/AboutTab/AboutTab";
 import ActionsTab from "./ModalTabs/ActionsTab";
 import HistoryTab from "./ModalTabs/HistoryTab";
 
