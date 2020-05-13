@@ -61,19 +61,24 @@ class Books extends Component {
       />
     ));
 
+    const modal = this.state.openModal && (
+      <ModalBook
+        id={this.state.openModalId}
+        closeModal={this.handleCloseModal}
+      />
+    );
+    const spinner = this.state.loading && <Spinner />;
+    const error = this.state.error && <h3>{this.state.error}</h3>;
+    const books = !this.state.loading && !this.state.error && (
+      <ul className={classes.Books}>{singleBooks}</ul>
+    );
+
     return (
       <>
-        {this.state.openModal && (
-          <ModalBook
-            id={this.state.openModalId}
-            closeModal={this.handleCloseModal}
-          />
-        )}
-        {this.state.loading && <Spinner />}
-        {this.state.error && <h3>{this.state.error}</h3>}
-        {!this.state.loading && !this.state.error && (
-          <ul className={classes.Books}>{singleBooks}</ul>
-        )}
+        {modal}
+        {spinner}
+        {error}
+        {books}
       </>
     );
   }
