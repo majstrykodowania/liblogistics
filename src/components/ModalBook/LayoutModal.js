@@ -1,12 +1,14 @@
 import React from "react";
-import ToolbarModal from "./ToolbarModal";
+import ToolbarModal from "./ToolbarModal/ToolbarModal";
+import ButtonCloseModal from "./ButtonCloseModal/ButtonCloseModal";
 
 const LayoutModal = (props) => (
-  <div>
-    <ToolbarModal changeTab={props.changeTab} />
-    <button onClick={props.closeModal}>Close modal</button>
+  <>
+    <ToolbarModal activeTab={props.activeTab} changeTab={props.changeTab} />
     {props.children}
-  </div>
+
+    <ButtonCloseModal closeModal={props.closeModal} />
+  </>
 );
 
 export default LayoutModal;

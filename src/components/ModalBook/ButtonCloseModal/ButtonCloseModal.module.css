@@ -1,0 +1,17 @@
+button.btnClose {
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #ec5f5f;
+  width: 125px;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 15px;
+  margin: 15px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+button.btnClose:hover {
+  box-shadow: 0 3px 4px -2px #858585;
+}

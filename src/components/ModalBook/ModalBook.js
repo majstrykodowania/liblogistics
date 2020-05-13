@@ -33,6 +33,7 @@ class ModalBook extends Component {
         <div className={classes.containerModal}>
           <div className={classes.wrapperModal}>
             <LayoutModal
+              activeTab={this.state.activeTab}
               changeTab={this.handleChangeTab}
               closeModal={closeModal}
             >
