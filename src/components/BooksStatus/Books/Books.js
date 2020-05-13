@@ -17,6 +17,13 @@ class Books extends Component {
 
   componentDidMount() {
     // Pobranie z bazy tablicy Books i przypisane do state books
+    this.fetchData();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.openModal !== prevState.openModal) this.fetchData();
+  }
+
+  fetchData = () => {
     this.setState({ loading: true });
 
     getBookList()
@@ -32,7 +39,7 @@ class Books extends Component {
           loading: false,
         })
       );
-  }
+  };
 
   handleOpenModal = (id) => {
     this.setState({

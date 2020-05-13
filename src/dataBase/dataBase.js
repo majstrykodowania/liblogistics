@@ -6,7 +6,7 @@ export const addNewBook = (newBook) => {
 
 export const getBookList = async () => {
   let booksArr = [];
-  const books = await db
+  await db
     .collection("books")
     .get()
     .then((snapshot) => {
@@ -15,4 +15,14 @@ export const getBookList = async () => {
       });
     });
   return booksArr;
+};
+
+export const getSingleBook = async (bookId) => {
+  return await db
+    .collection("books")
+    .doc(bookId)
+    .get()
+    .then((snapshot) => {
+      return snapshot.data();
+    });
 };
