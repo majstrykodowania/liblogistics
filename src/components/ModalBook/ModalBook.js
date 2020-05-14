@@ -15,6 +15,7 @@ class ModalBook extends Component {
     loading: false,
     book: [],
     error: null,
+    actionsInputValue: "",
   };
 
   componentDidMount() {
@@ -37,6 +38,10 @@ class ModalBook extends Component {
     });
   };
 
+  handleInputValueChange = (event) => {
+    this.setState({ actionsInputValue: event.target.value });
+  };
+
   render() {
     const { closeModal } = this.props;
     const { ABOUTTAB, ACTIONSTAB, HISTORYTAB } = staticData;
@@ -57,7 +62,13 @@ class ModalBook extends Component {
               >
                 {this.state.activeTab === ABOUTTAB && <AboutTab book={book} />}
                 {this.state.activeTab === ACTIONSTAB && (
-                  <ActionsTab book={book} id={this.state.idBook} />
+                  <ActionsTab
+                    book={book}
+                    id={this.state.idBook}
+                    inputValue={this.state.actionsInputValue}
+                    inputValueChange={this.handleInputValueChange}
+                    closeModal={closeModal}
+                  />
                 )}
                 {this.state.activeTab === HISTORYTAB && (
                   <HistoryTab book={book} />

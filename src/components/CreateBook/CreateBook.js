@@ -10,6 +10,7 @@ class CreateBook extends Component {
     description: "",
     quantity: "",
     currentReaders: [],
+    borrowHistory: [],
   };
 
   handleChangeInput = (e) => {

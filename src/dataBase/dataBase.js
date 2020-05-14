@@ -34,3 +34,10 @@ export const updateSingleBookReaders = async (bookId, newArray) => {
       currentReaders: [...newArray],
     });
 };
+export const updateBorrowHistory = async (bookId, newArray) => {
+  db.collection("books")
+    .doc(bookId)
+    .update({
+      borrowHistory: [...newArray],
+    });
+};
