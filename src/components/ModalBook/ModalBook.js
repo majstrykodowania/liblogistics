@@ -6,7 +6,7 @@ import Spinner from "../Spinner/Spinner";
 import LayoutModal from "./LayoutModal";
 import AboutTab from "./ModalTabs/AboutTab";
 import ActionsTab from "./ModalTabs/ActionsTab/ActionsTab";
-import HistoryTab from "./ModalTabs/HistoryTab";
+import HistoryTab from "./ModalTabs/HistoryTab/HistoryTab";
 
 class ModalBook extends Component {
   state = {
