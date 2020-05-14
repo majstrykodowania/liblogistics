@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./InfoBook.module.css";
 
 const InfoBook = (props) => {
-  const { author, description, quantity, released } = props;
+  const { author, description, currentReaders, quantity, released } = props;
+
   return (
     <div className={classes.infoWrapper}>
       <div className={classes.basics}>
@@ -16,7 +17,9 @@ const InfoBook = (props) => {
         </div>
         <div className={classes.info}>
           <h1>Stan magazynowy</h1>
-          <p>?/{quantity}</p>
+          <p>
+            {currentReaders && quantity - currentReaders.length}/{quantity}
+          </p>
         </div>
       </div>
       <span className={classes.line}></span>
