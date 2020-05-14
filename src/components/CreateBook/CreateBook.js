@@ -9,6 +9,7 @@ class CreateBook extends Component {
     released: "",
     description: "",
     quantity: "",
+    currentReaders: [],
   };
 
   handleChangeInput = (e) => {

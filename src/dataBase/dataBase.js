@@ -26,3 +26,11 @@ export const getSingleBook = async (bookId) => {
       return snapshot.data();
     });
 };
+
+export const updateSingleBookReaders = async (bookId, newArray) => {
+  db.collection("books")
+    .doc(bookId)
+    .update({
+      currentReaders: [...newArray],
+    });
+};

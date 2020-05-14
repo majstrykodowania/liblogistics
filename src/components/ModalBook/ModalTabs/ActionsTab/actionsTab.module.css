@@ -1,0 +1,29 @@
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+}
+.buttonsWrapper button {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  width: 210px;
+  height: 50px;
+  border-radius: 20px;
+  margin: 30px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.btnIn {
+  border-color: #05aa9a;
+  background-color: #32e18a;
+}
+button.btnOut {
+  border-color: #fea100;
+  background-color: #ffc06e;
+}

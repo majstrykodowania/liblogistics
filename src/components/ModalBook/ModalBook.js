@@ -5,7 +5,7 @@ import classes from "./ModalBook.module.css";
 import Spinner from "../Spinner/Spinner";
 import LayoutModal from "./LayoutModal";
 import AboutTab from "./ModalTabs/AboutTab";
-import ActionsTab from "./ModalTabs/ActionsTab";
+import ActionsTab from "./ModalTabs/ActionsTab/ActionsTab";
 import HistoryTab from "./ModalTabs/HistoryTab";
 
 class ModalBook extends Component {
@@ -57,7 +57,7 @@ class ModalBook extends Component {
               >
                 {this.state.activeTab === ABOUTTAB && <AboutTab book={book} />}
                 {this.state.activeTab === ACTIONSTAB && (
-                  <ActionsTab book={book} />
+                  <ActionsTab book={book} id={this.state.idBook} />
                 )}
                 {this.state.activeTab === HISTORYTAB && (
                   <HistoryTab book={book} />
